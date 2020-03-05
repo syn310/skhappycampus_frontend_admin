@@ -4,6 +4,7 @@ import {
 import { MailTemplateContentPopup } from 'components';
 import axios from 'axios';
 import storage from 'lib/storage';
+import devtest from 'lib/devtest';
 
 class MailTemplateContainer extends Component {
     constructor(props) {
@@ -87,7 +88,7 @@ class MailTemplateContainer extends Component {
         if(confirm("저장하시겠습니까?"))
             if(this.checkValidation())
                 axios({
-                    url: popupType==="등록" ? "/mailTemplate" : `/mailTemplate/${tempInfo.templateNumber}`,
+                    url: devtest() + popupType==="등록" ? "/mailTemplate" : `/mailTemplate/${tempInfo.templateNumber}`,
                     method : popupType==="등록" ? "post" : "put",
                     data: { tempInfo },
                     headers: { "Pragma" : 'no-cache' , "x-access-token": storage.getToken()}
@@ -138,7 +139,7 @@ class MailTemplateContainer extends Component {
         if(confirm("선택하신 항목을 삭제하시겠습니까?"))
             
             axios({
-                url: `/mailTemplate/delete/${templateNumber}`,
+                url: devtest() + `/mailTemplate/delete/${templateNumber}`,
                 method : "put",
                 headers: { "Pragma" : 'no-cache', "x-access-token": storage.getToken() }
             }).then((res)=>{
@@ -169,7 +170,7 @@ class MailTemplateContainer extends Component {
         const self = this;
         // console.log("token", storage.getToken())
         axios({
-            url: '/mailTemplate',
+            url: devtest() + '/mailTemplate',
             method:"get",
             headers: {  "Pragma": 'no-cache',
                         "x-access-token": storage.getToken() 

@@ -51,7 +51,7 @@ class HeaderContainer extends Component {
         const { MenuActions } = this.props;
 
         axios({
-            url:"/qna/checkNewQna",
+            url: devtest() + "/qna/checkNewQna",
             method:"get",
             headers: { "Pragma": 'no-cache',
                    "x-access-token": storage.getToken()} //session storage에서 저장된 token을 빼와서 token을 전달.

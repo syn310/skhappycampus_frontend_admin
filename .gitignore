@@ -4,6 +4,7 @@
 #production
 /dist
 yarn.lock
+package-lock.json
 
 #devTest
 # /src/lib/devtest.js
